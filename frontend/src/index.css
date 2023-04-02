@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply text-gray-800 font-sans text-base;
+}
+
+.sectionBoad {
+  @apply bg-yellow-600 rounded-sm bg-opacity-50 shadow-md;
+}
+
+.recipeListBoad {
+  @apply bg-red-50 rounded-sm bg-opacity-50 shadow-md max-w-2xl mx-auto;
+}
+
+.viewRecipeBotton {
+  @apply bg-red-300 bg-opacity-40 px-4 py-2 rounded-sm border-solid border-gray-800 border inline-block;
+}
