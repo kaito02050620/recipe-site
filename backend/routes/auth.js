@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
 
 //ユーザー新規登録
 router.post("/register", async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
   try {
     const newUser = new User({
       username: req.body.username,
