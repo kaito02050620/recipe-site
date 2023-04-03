@@ -13,7 +13,6 @@ const PostSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
-      max: 300,
     },
     image: {
       type: String,
@@ -21,14 +20,17 @@ const PostSchema = new mongoose.Schema(
     people: {
       type: Number,
       required: true,
+      default: 1,
     },
     seafood: {
       type: Array,
       required: true,
+      default: [],
     },
     category: {
       type: Array,
       required: true,
+      default: [],
     },
     foods: {
       type: [
@@ -38,6 +40,10 @@ const PostSchema = new mongoose.Schema(
             required: true,
           },
           food: {
+            type: String,
+            required: true,
+          },
+          amount: {
             type: String,
             required: true,
           },
@@ -64,4 +70,6 @@ const PostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", PostSchema);
+const Post = mongoose.model("Post", PostSchema);
+
+module.exports = Post;
