@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const authRoutes = require("./routes/auth");
+const uploadRoutes = require("./routes/upload");
 const app = express();
 
 //環境変数
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.listen(PORT, () => {
   console.log(`${PORT}-server-start`);
