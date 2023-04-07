@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import seafoodImage from "../../image/seafood_sample.png";
+import seafoodImage from "../assets/image/seafood_sample.png";
 
 function Home() {
   return (

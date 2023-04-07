@@ -1,9 +1,14 @@
 import React, { useState, createContext, useEffect } from "react";
-import RecipeBoard from "./RecipeBoard";
-import { RecipeSerch, recipeName, foodName, updateOrder } from "./RecipeSerch";
+import RecipeBoard from "../components/list/RecipeBoard";
+import {
+  RecipeSerch,
+  recipeName,
+  foodName,
+  updateOrder,
+} from "../components/list/RecipeSerch";
 export const SearchState = createContext();
 import ReactPaginate from "react-paginate";
-import recipeApi from "../../api/input";
+import recipeApi from "../components/api/input";
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);

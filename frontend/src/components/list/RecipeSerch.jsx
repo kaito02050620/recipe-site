@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import React from "react";
-import RecipeSelect from "../select/recipeSelect";
 import FoodSelect from "../select/foodSelect";
 import UpdateSelect from "../select/updateSelect";
-import { SearchState } from "./RecipeList";
+import { SearchState } from "../../pages/RecipeList";
 import { recipeName, foodName, updateOrder } from "../select/select";
+import RecipeSelect from "../select/recipeSelect";
 
 const RecipeSerch = () => {
   const [
     selectRecipe,
     setSelectRecipe,
     selectFood,
+
     setSelectFood,
     selectUpdateOrder,
     setSelectUpdateOrder,

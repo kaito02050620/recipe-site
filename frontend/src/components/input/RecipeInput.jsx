@@ -6,7 +6,7 @@ import InputFood from "./Food";
 import InputCook from "./cook";
 import InputCtegory from "./category";
 import InputSeaFoods from "./Seafoods";
-import recipeApi from "../../api/input";
+import recipeApi from "../api/input";
 
 function RecipeInput() {
   const [title, setTitle] = useState("");
