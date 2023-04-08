@@ -4,7 +4,7 @@ import { foodName } from "../select/select";
 function InputSeaFoods({ seaFoods, setSeaFoods, seaFood, setSeaFood }) {
   const newSeaFood = { id: seaFoods.length + 1, seafood: seaFood };
 
-  const SeaFoodDelette = (id) => {
+  const seaFoodDelete = (id) => {
     setSeaFoods(seaFoods.filter((food) => food.id !== id));
   };
 
@@ -39,7 +39,7 @@ function InputSeaFoods({ seaFoods, setSeaFoods, seaFood, setSeaFood }) {
             return (
               <li key={food.id}>
                 <p>{food.seafood}</p>
-                <button onClick={() => SeaFoodDelette(food.id)}>削除</button>
+                <button onClick={() => seaFoodDelete(food.id)}>削除</button>
               </li>
             );
           })}

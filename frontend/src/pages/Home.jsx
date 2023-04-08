@@ -6,12 +6,12 @@ function Home() {
   return (
     <>
       <section className="flex justify-between mb-10">
-        <div className="sectionBoad w-3/5 p-5">
+        <div className="sectionBoard w-3/5 p-5">
           <h1 className="text-3xl mb-10">今夜の晩御飯</h1>
           <div className="flex items-center justify-end">
             <div className="w-full text-center">
               <p className="text-5xl mb-8">海鮮丼</p>
-              <Link className="viewRecipeBotton" to="/recipelist">
+              <Link className="viewRecipeButton" to="/recipeList">
                 レシピを見る
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ function Home() {
           <h1 className="text-3xl mb-24">今月のお題</h1>
           <div className="w-full text-center">
             <p className="text-5xl mb-10">マグロ</p>
-            <Link className="viewRecipeBotton mb-5" to="/recipeinput">
+            <Link className="viewRecipeButton mb-5" to="/recipeInput">
               レシピを投稿する
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <div className="sectionBoad p-5">
+      <div className="sectionBoard p-5">
         <h1 className="text-3xl mb-10">総合ランキング</h1>
         <div className="justify-center">
           <div className="flex items-center justify-center mb-10">

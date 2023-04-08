@@ -11,7 +11,7 @@ function InputFood({
 }) {
   const howManyPeople = [1, 2, 3, 5];
 
-  const foodDelette = (id) => {
+  const foodDelete = (id) => {
     setFoods(foods.filter((food) => food.id !== id));
   };
 
@@ -51,7 +51,7 @@ function InputFood({
                     <li key={food.id}>
                       <p>{food.food}</p>
                       <p>{food.amount}</p>
-                      <button onClick={() => foodDelette(food.id)}>削除</button>
+                      <button onClick={() => foodDelete(food.id)}>削除</button>
                     </li>
                   );
                 })}

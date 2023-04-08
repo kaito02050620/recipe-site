@@ -1,7 +1,7 @@
 import React from "react";
 import { recipeName } from "../select/select";
 
-function InputCtegory({ category, setCategory }) {
+function InputCategory({ category, setCategory }) {
   return (
     <div className="block relative w-48">
       <h2>
@@ -33,4 +33,4 @@ function InputCtegory({ category, setCategory }) {
   );
 }
 
-export default InputCtegory;
+export default InputCategory;

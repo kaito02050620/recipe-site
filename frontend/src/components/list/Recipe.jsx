@@ -3,22 +3,22 @@ import { useParams } from "react-router-dom";
 
 function Recipe({ recipes }) {
   const { id } = useParams();
-  const findReicpe = recipes.find((p) => p.id === parseInt(id));
-  if (!findReicpe) {
+  const findRecipe = recipes.find((p) => p.id === parseInt(id));
+  if (!findRecipe) {
     return <div>not found</div>;
   }
 
   return (
     <div className="sectionBoad w-full p-5">
-      <h1>{findReicpe.title}</h1>
+      <h1>{findRecipe.title}</h1>
       <div>
-        <img src={findReicpe.image} alt={findReicpe.title} />
+        <img src={findRecipe.image} alt={findRecipe.title} />
       </div>
       <p>{findReicpe.description}</p>
       <div>
-        <h2>◆材料&nbsp;{findReicpe.peoplecount}人前</h2>
+        <h2>◆材料&nbsp;{findRecipe.people}人前</h2>
         <ul>
-          {findReicpe.food.map((el) => {
+          {findRecipe.food.map((el) => {
             return (
               <li key={el.food}>
                 <p>{el.food}</p>
@@ -32,7 +32,7 @@ function Recipe({ recipes }) {
         <h2>◆作り方</h2>
         <ul>
           {" "}
-          {findReicpe.cook.map((el) => {
+          {findRecipe.cook.map((el) => {
             return <li key={el.id}>{el.recipe}</li>;
           })}
         </ul>

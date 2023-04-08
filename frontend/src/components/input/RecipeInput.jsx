@@ -4,7 +4,7 @@ import InputImage from "./Image";
 import InputTitle from "./Title";
 import InputFood from "./Food";
 import InputCook from "./cook";
-import InputCtegory from "./category";
+import InputCategory from "./category";
 import InputSeaFoods from "./Seafoods";
 import recipeApi from "../api/input";
 
@@ -22,29 +22,14 @@ function RecipeInput() {
   const [cooks, setCooks] = useState([]);
   const [people, setPeople] = useState(1);
 
-  let newID = "";
-  function createID() {
-    let len = 10;
-    let str = "0123456789";
-    let strLen = str.length;
-    let result = "";
-    for (let i = 0; i < len; i++) {
-      result += str[Math.floor(Math.random() * strLen)];
-    }
-    newID = Number(result);
-  }
-  createID();
-
   const newRecipe = {
-    id: newID,
     title: title,
     image: image,
     category: category,
     seafood: seaFoods,
     food: foods,
     description: description,
-    // date: new Date(),
-    peoplecount: people,
+    people: people,
     cook: cooks,
   };
 
@@ -70,7 +55,7 @@ function RecipeInput() {
         <div className="sectionBoad w-full p-5">
           <InputTitle value={title} setTitle={setTitle} />
           <InputImage image={image} setImage={setImage} />
-          <InputCtegory category={category} setCategory={setCategory} />
+          <InputCategory category={category} setCategory={setCategory} />
           <InputSeaFoods
             seaFood={seaFood}
             setSeaFood={setSeaFood}

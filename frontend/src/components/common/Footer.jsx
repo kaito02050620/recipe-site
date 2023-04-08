@@ -17,7 +17,7 @@ const Footer = () => {
           <nav>
             <ul className="text-right">
               <li className="mb-3">
-                <Link className="" to="/sitedescription">
+                <Link className="" to="/siteDescription">
                   みんなの海鮮とは
                 </Link>
               </li>

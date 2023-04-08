@@ -13,17 +13,17 @@ const Header = () => {
       <nav>
         <ul className="flex">
           <li className="text-yellow-600 -ml-12 text-xl">
-            <Link className="" to="/sitedescription">
+            <Link className="" to="/siteDescription">
               みんなの海鮮とは
             </Link>
           </li>
           <li className="ml-12 text-xl">
-            <Link className="" to="/">
+            <Link className="" to="/register">
               新規登録（無料）
             </Link>
           </li>
           <li className="ml-9 text-xl">
-            <Link className="" to="/">
+            <Link className="" to="/login">
               ログイン
             </Link>
           </li>

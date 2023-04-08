@@ -2,7 +2,7 @@ import React from "react";
 import MyDropzoneBasic from "./Drop";
 
 function InputImage({ image, setImage }) {
-  const imageDelette = (e) => {
+  const imageDelete = (e) => {
     e.preventDefault();
     setImage("");
   };
@@ -14,7 +14,7 @@ function InputImage({ image, setImage }) {
       ) : (
         <div>
           <button
-            onClick={imageDelette}
+            onClick={imageDelete}
             className="w-6 h-6 bg-red-600 absolute top-2 right-2"
           >
             delate

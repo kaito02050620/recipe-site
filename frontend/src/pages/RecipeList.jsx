@@ -74,7 +74,7 @@ function RecipeList() {
   };
 
   return (
-    <div className="sectionBoad w-full p-5 ">
+    <div className="sectionBoard w-full p-5 ">
       <h1 className="text-3xl mb-10">レシピ一覧</h1>
       <SearchState.Provider
         value={[

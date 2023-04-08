@@ -1,7 +1,7 @@
 import React from "react";
 
 function InputCook({ cooks, setCooks, recipe, setRecipe }) {
-  const recipeDelette = (id) => {
+  const recipeDelete = (id) => {
     setCooks(cooks.filter((cook) => cook.id !== id));
   };
 
@@ -29,7 +29,7 @@ function InputCook({ cooks, setCooks, recipe, setRecipe }) {
                 return (
                   <li key={cook.id}>
                     <p>{cook.recipe}</p>
-                    <button onClick={() => recipeDelette(cook.id)}>削除</button>
+                    <button onClick={() => recipeDelete(cook.id)}>削除</button>
                   </li>
                 );
               })}

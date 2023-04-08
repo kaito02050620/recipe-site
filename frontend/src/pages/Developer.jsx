@@ -3,7 +3,7 @@ import takenokoImage from "../assets/image/takenoko.png";
 
 const Developer = () => {
   return (
-    <div className="sectionBoad py-16">
+    <div className="sectionBoard py-16">
       <h1 className="text-3xl text-center mb-16">サイト開発者について</h1>
       <div className="flex justify-center">
         <div>

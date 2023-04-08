@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function RecipeBoard(recipe) {
   return (
-    <li className="h-52 w-full p-5 recipeListBoad mb-5 flex items-center">
+    <li className="h-52 w-full p-5 recipeListBoard mb-5 flex items-center">
       <div className="w-2/5 ">
         <img src={recipe.image} alt={recipe.title} />
       </div>
@@ -12,7 +12,7 @@ function RecipeBoard(recipe) {
         <p>{recipe.description}</p>
         <Link
           to={`/recipe/${recipe.id}`}
-          className="viewRecipeBotton absolute bottom-0 -right-0"
+          className="viewRecipeButton absolute bottom-0 -right-0"
         >
           レシピを見る
           <svg

@@ -6,10 +6,12 @@ import Developer from "./pages/Developer";
 import SiteDescription from "./pages/SiteDescription";
 import RecipeLists from "./pages/RecipeList";
 import RecipeInput from "./components/input/RecipeInput";
-import UserPage from "./pages/UserPage";
+import Register from "./pages/Register";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Recipe from "./components/list/Recipe";
+import Login from "./pages/Login";
+import User from "./pages/UserEdit";
 
 const baseApi = axios.create({
   baseURL: "http://localhost:3000/",
@@ -42,7 +44,9 @@ const App = () => {
               path="/recipe/:id"
               element={<Recipe recipes={resources} />}
             />
-            <Route path="/userPage" element={<UserPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/user" element={<User />} />
           </Routes>
         </main>
         <Footer />
