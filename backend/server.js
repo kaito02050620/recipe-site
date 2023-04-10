@@ -5,7 +5,16 @@ const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const authRoutes = require("./routes/auth");
 const uploadRoutes = require("./routes/upload");
+const cors = require("cors");
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 
 //環境変数
 require("dotenv").config();
