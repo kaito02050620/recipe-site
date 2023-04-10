@@ -22,6 +22,16 @@ router.get("/allRecipe", async (req, res) => {
   }
 });
 
+//レシピを取得
+router.get("/:id", async (req, res) => {
+  try {
+    const recipe = await Post.find({ _id: req.params.id });
+    return res.status(200).json(recipe);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 //レシピを削除
 router.delete("/:id", async (req, res) => {
   const recipe = await Post.findById(req.params.id);
