@@ -11,7 +11,7 @@ function RecipeBoard(recipe) {
         <h3 className="text-xl mb-6">{recipe.title}</h3>
         <p>{recipe.description}</p>
         <Link
-          to={`/recipe/${recipe.id}`}
+          to={`/recipe/${recipe._id}`}
           className="viewRecipeButton absolute bottom-0 -right-0"
         >
           レシピを見る

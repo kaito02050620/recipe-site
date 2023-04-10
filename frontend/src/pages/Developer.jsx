@@ -1,5 +1,5 @@
 import React from "react";
-import takenokoImage from "../assets/image/takenoko.png";
+import takenokoImage from "../../public/assets/image/takenoko.png";
 
 const Developer = () => {
   return (

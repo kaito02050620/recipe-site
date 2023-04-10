@@ -1,14 +1,15 @@
 import React, { useState, createContext, useEffect } from "react";
 import RecipeBoard from "../components/list/RecipeBoard";
 import {
-  RecipeSerch,
+  RecipeSearch,
   recipeName,
   foodName,
   updateOrder,
-} from "../components/list/RecipeSerch";
+} from "../components/list/RecipeSearch";
 export const SearchState = createContext();
 import ReactPaginate from "react-paginate";
-import recipeApi from "../components/api/input";
+import axios from "axios";
+const API_SERVER = import.meta.env.VITE_API_SERVER;
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -20,9 +21,11 @@ function RecipeList() {
 
   //DBからレシピリストを取得
   useEffect(() => {
-    recipeApi.getAll().then((recipe) => {
-      setRecipes(recipe);
-    });
+    const getRecipes = async () => {
+      const res = await axios.get(API_SERVER + "/posts/allRecipe");
+      setRecipes(res.data);
+    };
+    getRecipes();
   }, []);
 
   //日付をDateオブジェクトに変換
@@ -61,10 +64,10 @@ function RecipeList() {
   });
 
   //料理名と海鮮名の選択による処理
-  const serchRecipe = filterRecipe
+  const searchRecipe = filterRecipe
     .slice(offset, offset + perPage)
     .map((recipe) => {
-      return <RecipeBoard key={recipe.id} {...recipe} />;
+      return <RecipeBoard key={recipe._id} {...recipe} />;
     });
 
   //ページネーション選択処理
@@ -86,13 +89,15 @@ function RecipeList() {
           setSelectUpdateOrder,
         ]}
       >
-        <RecipeSerch />
+        <RecipeSearch />
       </SearchState.Provider>
       <ul className="mt-11">
-        {serchRecipe.length === 0 ? (
-          <h2 className="text-3xl my-6 text-center">検索結果はありません。</h2>
+        {searchRecipe.length === 0 ? (
+          <h2 className="text-3xl my-6 text-center">
+            検索結果はありません。まだ投稿はありません
+          </h2>
         ) : (
-          serchRecipe
+          searchRecipe
         )}
       </ul>
       <ReactPaginate

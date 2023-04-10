@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import InputDescription from "./Description";
-import InputImage from "./Image";
-import InputTitle from "./Title";
-import InputFood from "./Food";
-import InputCook from "./cook";
-import InputCategory from "./category";
-import InputSeaFoods from "./Seafoods";
-import recipeApi from "../api/input";
+import InputDescription from "../components/input/Description";
+import InputImage from "../components/input/Image";
+import InputTitle from "../components/input/Title";
+import InputFood from "../components/input/Food";
+import InputCook from "../components/input/cook";
+import InputCategory from "../components/input/category";
+import InputSeaFoods from "../components/input/Seafoods";
+import recipeApi from "../components/api/input";
 
 function RecipeInput() {
   const [title, setTitle] = useState("");
@@ -52,7 +52,7 @@ function RecipeInput() {
   return (
     <>
       <form>
-        <div className="sectionBoad w-full p-5">
+        <div className="sectionBoard w-full p-5">
           <InputTitle value={title} setTitle={setTitle} />
           <InputImage image={image} setImage={setImage} />
           <InputCategory category={category} setCategory={setCategory} />

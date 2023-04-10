@@ -6,7 +6,7 @@ import { SearchState } from "../../pages/RecipeList";
 import { recipeName, foodName, updateOrder } from "../select/select";
 import RecipeSelect from "../select/recipeSelect";
 
-const RecipeSerch = () => {
+const RecipeSearch = () => {
   const [
     selectRecipe,
     setSelectRecipe,
@@ -33,4 +33,4 @@ const RecipeSerch = () => {
   );
 };
 
-export { recipeName, foodName, updateOrder, RecipeSerch };
+export { recipeName, foodName, updateOrder, RecipeSearch };
