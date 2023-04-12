@@ -22,11 +22,13 @@ router.post("/register", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     //ユーザー照合
+    console.log(req.body.email);
     const user = await User.findOne({ email: req.body.email });
+    console.log(user);
     if (!user) return res.status(400).json("ユーザーが見つかりません");
 
     //パスワード照合
-    const compared = await bcrypt.compare(user.password, req.body.password);
+    const compared = await bcrypt.compare(req.body.password, user.password);
     if (!compared) return res.status(400).json("パスワードが一致しません");
     return res.status(200).json(user);
   } catch (error) {

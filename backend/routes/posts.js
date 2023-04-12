@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
   const currentUserId = req.body.id;
   try {
     if (recipe.userId === currentUserId) {
-      await Post.deleteOne({ id: req.params.id });
+      await Post.deleteOne({ _id: req.params.id });
       return res.status(200).json("レシピを削除しました");
     } else {
       return res
@@ -71,7 +71,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //特定のユーザーの投稿のみ取得
-router.get("/:id", async (req, res) => {
+router.get("/private/:id", async (req, res) => {
   try {
     const recipes = await Post.find({ userId: req.params.id });
     return res.status(200).json(recipes);
