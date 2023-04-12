@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import axios from "axios";
 const API_SERVER = import.meta.env.VITE_API_SERVER;
 
-console.log(API_SERVER + "/auth/register");
-
 function Register() {
   const userName = useRef(null);
   const email = useRef(null);
@@ -12,11 +10,12 @@ function Register() {
 
   const newRegisterButton = async (e) => {
     e.preventDefault();
+    console.log(email.current.value);
     if (
-      userName.current.value === "" &&
-      email.current.value === "" &&
-      password.current.value === "" &&
-      confirmPassword.current.value === ""
+      userName.current.value !== "" &&
+      email.current.value !== "" &&
+      password.current.value !== "" &&
+      confirmPassword.current.value !== ""
     ) {
       if (password.current.value === confirmPassword.current.value) {
         try {
@@ -44,7 +43,7 @@ function Register() {
     <div className="sectionBoard w-full p-20 ">
       <div className="max-w-sm bg-white bg-opacity-80 rounded-sm shadow-md p-6 m-auto ">
         <h1 className="text-2xl text-center mb-5">新規登録</h1>
-        <form className="">
+        <form className="" onSubmit={(e) => newRegisterButton(e)}>
           <div className="mb-6">
             <label htmlFor="username" className="block mb-1">
               ユーザー名
@@ -56,7 +55,7 @@ function Register() {
               id="username"
               placeholder="ユーザー名"
               required
-              min={1}
+              min="1"
               ref={userName}
             />
           </div>
@@ -106,11 +105,11 @@ function Register() {
             />
           </div>
           <button
-            onClick={(e) => newRegisterButton(e)}
             type="submit"
-            value="新規登録する"
             className="block bg-red-300 bg-opacity-40 px-4 py-2 rounded-sm border-solid border-gray-800 border m-auto"
-          ></button>
+          >
+            新規登録する
+          </button>
         </form>
       </div>
     </div>
