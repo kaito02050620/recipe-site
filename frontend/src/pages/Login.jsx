@@ -1,12 +1,48 @@
-import React from "react";
+import React, { useRef } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+const API_SERVER = import.meta.env.VITE_API_SERVER;
 
 function Login() {
+  const email = useRef(null);
+  const password = useRef(null);
+  const confirmPassword = useRef(null);
+
+  const loginButton = async (e) => {
+    e.preventDefault();
+    if (
+      email.current.value !== "" &&
+      password.current.value !== "" &&
+      confirmPassword.current.value !== ""
+    ) {
+      if (password.current.value === confirmPassword.current.value) {
+        try {
+          console.log();
+          await axios.get(API_SERVER + "/auth/login", {
+            email: email.current.value,
+            password: password.current.value,
+          });
+          console.log("login");
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        confirmPassword.current.setCustomValidity(
+          "パスワードが一致していません"
+        );
+        password.current.value = "";
+        confirmPassword.current.value = "";
+      }
+    } else {
+      console.log("ログインできません");
+    }
+  };
+
   return (
     <div className="sectionBoard w-full p-20 ">
       <div className="max-w-sm bg-white bg-opacity-80 rounded-sm shadow-md p-6 m-auto ">
         <h1 className="text-2xl text-center mb-5">ログイン</h1>
-        <form className="">
+        <form className="" onSubmit={(e) => loginButton(e)}>
           <div className="mb-6">
             <label htmlFor="email" className="block mb-1">
               メールアドレス
@@ -16,7 +52,10 @@ function Login() {
               type="email"
               name="email"
               id="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               placeholder="メールアドレス"
+              ref={email}
+              required
             />
           </div>
           <div className="mb-6">
@@ -29,6 +68,9 @@ function Login() {
               name="password"
               id="password"
               placeholder="パスワード"
+              required
+              minLength="6"
+              ref={password}
             />
           </div>
           <div className="mb-6">
@@ -38,16 +80,20 @@ function Login() {
             <input
               className="block w-full p-2 border-gray-500 border-solid"
               type="password"
-              name="confirmationPassword"
-              id="confirmationPassword"
+              name="confirmPassword"
+              id="confirmPassword"
+              minLength="6"
               placeholder="確認用パスワード"
+              ref={confirmPassword}
+              required
             />
           </div>
-          <input
+          <button
             type="submit"
-            value="ログインする"
             className="block bg-red-300 bg-opacity-40 px-4 py-2 rounded-sm border-solid border-gray-800 border m-auto"
-          />
+          >
+            ログインする
+          </button>
         </form>
         <Link to="/register">
           <p className="text-blue-400 text-sm text-center mt-5 cursor-pointer">
