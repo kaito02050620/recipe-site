@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+const TEST_USER = import.meta.env.VITE_TEST_USER;
 
 const Header = () => {
   return (
@@ -15,6 +16,11 @@ const Header = () => {
           <li className="text-yellow-600 -ml-12 text-xl">
             <Link className="" to="/siteDescription">
               みんなの海鮮とは
+            </Link>
+          </li>
+          <li className="ml-12 text-xl">
+            <Link className="" to={`/user/${TEST_USER}`}>
+              個人ページ
             </Link>
           </li>
           <li className="ml-12 text-xl">
