@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Recipe from "./pages/Recipe";
 import Login from "./pages/Login";
 import User from "./pages/UserEdit";
+import RecipeInput from "./pages/RecipeInput";
 const TEST_USER = import.meta.env.VITE_TEST_USER;
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/developer" element={<Developer />} />
             <Route path="/recipeList" element={<RecipeLists />} />
             <Route path="/recipe/:id" element={<Recipe />} />
+            <Route path="/recipeInput" element={<RecipeInput />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path={`/user/${TEST_USER}`} element={<User />} />

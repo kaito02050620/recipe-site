@@ -1,24 +1,30 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 function MyDropzoneBasic(props) {
-  const [changeBase64Image, setChangeBase64Image] = useState("");
+  const [dropImage, setDropImage] = useState("");
 
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64String = reader.result;
-        setChangeBase64Image(base64String);
-      };
-      reader.readAsDataURL(file);
-    });
-  }, []);
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const handleAcceptedFiles = (files) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+
+    reader.onload = () => {
+      setDropImage(reader.result);
+    };
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/png" || "image/jpeg" || "image/jpg",
+    multiple: false,
+    onDrop: (acceptedFiles) => {
+      handleAcceptedFiles(acceptedFiles);
+    },
+  });
 
   useEffect(() => {
-    props.setImage(changeBase64Image);
-  }, [props.setImage, changeBase64Image]);
+    props.setImage(dropImage);
+    props.setPreview(dropImage);
+  }, [props.setImage, dropImage]);
 
   return (
     <div>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import MyDropzoneBasic from "./Drop";
 
 function InputImage({ image, setImage }) {
+  const [preview, setPreview] = useState("");
   const imageDelete = (e) => {
     e.preventDefault();
     setImage("");
@@ -10,7 +11,7 @@ function InputImage({ image, setImage }) {
   return (
     <div className="bg-gray-500 w-52 h-48 relative">
       {image === "" ? (
-        <MyDropzoneBasic setImage={setImage} />
+        <MyDropzoneBasic setImage={setImage} setPreview={setPreview} />
       ) : (
         <div>
           <button
@@ -19,7 +20,7 @@ function InputImage({ image, setImage }) {
           >
             delate
           </button>
-          <img src={image}></img>
+          <img src={preview}></img>
         </div>
       )}
     </div>

@@ -15,7 +15,7 @@ function InputFood({
     setFoods(foods.filter((food) => food.id !== id));
   };
 
-  const newFood = { id: foods.length + 1, food: ingredient, amount: amount };
+  const newFood = { No: foods.length + 1, food: ingredient, amount: amount };
   const addFoodButton = (e) => {
     e.preventDefault();
     if (ingredient === "" || amount === "") {
@@ -48,10 +48,10 @@ function InputFood({
               <ul>
                 {foods.map((food) => {
                   return (
-                    <li key={food.id}>
+                    <li key={food.No}>
                       <p>{food.food}</p>
                       <p>{food.amount}</p>
-                      <button onClick={() => foodDelete(food.id)}>削除</button>
+                      <button onClick={() => foodDelete(food.No)}>削除</button>
                     </li>
                   );
                 })}
