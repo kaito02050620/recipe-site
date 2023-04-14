@@ -31,7 +31,7 @@ function RecipeList() {
   //日付をDateオブジェクトに変換
   const changeData = () => {
     recipes.forEach((recipe) => {
-      recipe.date = new Date(recipe.date);
+      recipe.date = new Date(recipe.updatedAt);
     });
   };
 
@@ -47,10 +47,12 @@ function RecipeList() {
 
   //料理名と海鮮名の選択による処理
   const filterRecipe = UpdateSearch.filter((recipe) => {
+    console.log(recipes);
+
     const defaultRecipe = selectRecipe === "料理名";
     const defaultName = selectFood === "海鮮名";
-    const selectedRecipe = recipe.category.includes(selectRecipe);
-    const selectedName = recipe.seafood.includes(selectFood);
+    const selectedRecipe = recipe.category;
+    const selectedName = recipe.seafoods.includes(selectFood);
 
     if (defaultRecipe && defaultName) {
       return true;
