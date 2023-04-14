@@ -1,11 +1,16 @@
 import React from "react";
 
 function InputCook({ cooks, setCooks, recipe, setRecipe }) {
-  const recipeDelete = (id) => {
-    setCooks(cooks.filter((cook) => cook.id !== id));
+  //作り方削除
+  const recipeDelete = (e, No) => {
+    e.preventDefault();
+    const updateCooks = cooks.filter((cook) => cook.No !== No);
+    updateCooks.map((cook, index) => (cook.No = index + 1));
+    setCooks(updateCooks);
   };
 
-  const newCooks = { id: cooks.length + 1, recipe: recipe };
+  //作り方追加
+  const newCooks = { No: cooks.length + 1, recipe: recipe };
   const addRecipe = (e) => {
     e.preventDefault();
     if (recipe === "") {
@@ -27,9 +32,11 @@ function InputCook({ cooks, setCooks, recipe, setRecipe }) {
             <ul>
               {cooks.map((cook) => {
                 return (
-                  <li key={cook.id}>
+                  <li key={cook.No}>
                     <p>{cook.recipe}</p>
-                    <button onClick={() => recipeDelete(cook.id)}>削除</button>
+                    <button onClick={(e) => recipeDelete(e, cook.No)}>
+                      削除
+                    </button>
                   </li>
                 );
               })}
