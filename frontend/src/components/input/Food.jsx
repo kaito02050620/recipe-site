@@ -9,12 +9,18 @@ function InputFood({
   amount,
   setAmount,
 }) {
+  //何人前デフォルト値
   const howManyPeople = [1, 2, 3, 5];
 
-  const foodDelete = (id) => {
-    setFoods(foods.filter((food) => food.id !== id));
+  //材料削除
+  const foodDelete = (e, No) => {
+    e.preventDefault();
+    const updateRecipe = foods.filter((food) => food.No !== No);
+    updateRecipe.map((food, index) => (food.No = index + 1));
+    setFoods(updateRecipe);
   };
 
+  //材料追加
   const newFood = { No: foods.length + 1, food: ingredient, amount: amount };
   const addFoodButton = (e) => {
     e.preventDefault();
@@ -51,7 +57,9 @@ function InputFood({
                     <li key={food.No}>
                       <p>{food.food}</p>
                       <p>{food.amount}</p>
-                      <button onClick={() => foodDelete(food.No)}>削除</button>
+                      <button onClick={(e) => foodDelete(e, food.No)}>
+                        削除
+                      </button>
                     </li>
                   );
                 })}
