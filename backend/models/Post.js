@@ -22,15 +22,24 @@ const PostSchema = new mongoose.Schema(
       required: true,
       default: 1,
     },
-    seafood: {
-      type: Array,
-      required: true,
+    seafoods: {
+      type: [
+        {
+          No: {
+            type: Number,
+            required: true,
+          },
+          seafood: {
+            type: String,
+            required: true,
+          },
+        },
+      ],
       default: [],
     },
     category: {
-      type: Array,
+      type: String,
       required: true,
-      default: [],
     },
     foods: {
       type: [
