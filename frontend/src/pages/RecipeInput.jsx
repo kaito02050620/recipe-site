@@ -6,6 +6,9 @@ import InputFood from "../components/input/Food";
 import InputCook from "../components/input/cook";
 import InputCategory from "../components/input/category";
 import InputSeaFoods from "../components/input/Seafoods";
+import axios from "axios";
+const API_SERVER = import.meta.env.VITE_API_SERVER;
+const TEST_USER = import.meta.env.VITE_TEST_USER;
 
 function RecipeInput() {
   const [title, setTitle] = useState("");
@@ -33,33 +36,38 @@ function RecipeInput() {
   //     "recipes": [{"No": 1,"recipe":"カレイの下処理"},{"No": 2,"recipe": "醤油と30分煮込む"}]
   // }
 
-  //投稿用の配列　useStateで入力　クリエイトボタン（axiosでAPIたたく）　リダイレクト　ユーザーページへ　プレビュー
+  //クリエイトボタン（axiosでAPIたたく）　リダイレクト　ユーザーページへ　プレビュー
 
   const newRecipe = {
+    userId: TEST_USER,
     title: title,
     image: image,
     category: category,
-    seafood: seaFoods,
-    food: foods,
+    seafoods: seaFoods,
+    foods: foods,
     description: description,
-    people: people,
+    people: Number(people),
     recipes: cooks,
   };
 
-  console.log(newRecipe);
+  // console.log(newRecipe);
 
-  const createRecipe = (e) => {
-    // e.preventDefault();
-    // if (
-    //   Object.values(newRecipe).every(
-    //     (value) => value !== "" && value.length !== 0
-    //   )
-    // ) {
-    //   alert("正常にデータが入力されました。");
-    //   recipeApi.post(newRecipe).then();
-    // } else {
-    //   alert("未入力の項目があります");
-    // }
+  const createRecipeButton = (e) => {
+    e.preventDefault();
+
+    if (
+      Object.values(newRecipe).every(
+        (value) => value !== "" && value.length !== 0
+      )
+    ) {
+      alert("正常にデータが入力されました。");
+      const createRecipe = () => {
+        axios.post(API_SERVER + "/posts", newRecipe);
+      };
+      createRecipe();
+    } else {
+      alert("未入力の項目があります");
+    }
   };
 
   return (
@@ -94,7 +102,7 @@ function RecipeInput() {
             recipe={recipe}
             setRecipe={setRecipe}
           />
-          <button onClick={createRecipe}>送信</button>
+          <button onClick={(e) => createRecipeButton(e)}>送信</button>
         </div>
       </form>
     </>
