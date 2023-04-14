@@ -2,12 +2,16 @@ import React from "react";
 import { foodName } from "../select/select";
 
 function InputSeaFoods({ seaFoods, setSeaFoods, seaFood, setSeaFood }) {
-  const newSeaFood = { id: seaFoods.length + 1, seafood: seaFood };
-
-  const seaFoodDelete = (id) => {
-    setSeaFoods(seaFoods.filter((food) => food.id !== id));
+  //海鮮削除
+  const seaFoodDelete = (e, No) => {
+    e.preventDefault();
+    const updateSeafoods = seaFoods.filter((seafood) => seafood.No !== No);
+    updateSeafoods.map((seafood, index) => (seafood.No = index + 1));
+    setSeaFoods(updateSeafoods);
   };
 
+  //海鮮追加
+  const newSeaFood = { No: seaFoods.length + 1, seafood: seaFood };
   const addSeaFood = (e) => {
     e.preventDefault();
     if (seaFood === "") {
@@ -37,9 +41,9 @@ function InputSeaFoods({ seaFoods, setSeaFoods, seaFood, setSeaFood }) {
         <ul>
           {seaFoods.map((food) => {
             return (
-              <li key={food.id}>
+              <li key={food.No}>
                 <p>{food.seafood}</p>
-                <button onClick={() => seaFoodDelete(food.id)}>削除</button>
+                <button onClick={(e) => seaFoodDelete(e, food.No)}>削除</button>
               </li>
             );
           })}
