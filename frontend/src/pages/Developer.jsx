@@ -1,5 +1,5 @@
 import React from "react";
-import takenokoImage from "../../public/assets/image/takenoko.png";
+const PUBLIC_FOLDER = import.meta.env.VITE_API_PUBLIC_FOLDER;
 
 const Developer = () => {
   return (
@@ -8,7 +8,7 @@ const Developer = () => {
       <div className="flex justify-center">
         <div>
           <div className="w-80 h-70 shadow-xl">
-            <img src={takenokoImage} alt="ﾀｹﾉｺ画像" />
+            <img src={PUBLIC_FOLDER + "/takenoko.png"} alt="ﾀｹﾉｺ画像" />
           </div>
         </div>
         <div className="w-80 ml-24">
@@ -28,7 +28,7 @@ const Developer = () => {
             <li className="mb-4">
               <p className="inline-block">コメント&nbsp;&#058;&nbsp;&nbsp;</p>
               <p className="inline-block leading-loose">
-                本サイトに足を運んでいただき有難うございます。ワクワクな開発をモットーに面白そう！と思ったものを生み出し続けます。社内SEの影響より、IT開発者になる事を決意して日々学習してます。もしここ改善してほしい、こんな機能が欲しい等ありましたら意見お待ちしております。
+                本サイトに足を運んでいただき有難うございます。ワクワクな開発をモットーに面白そう！と思ったものを生み出し続けます。社内SEの影響より、IT開発者になる事を決意して日々学習してます。もしここ改善してほしい、こんな機能が欲しい等ありましたら意見お待ちしております。写真は実家の猫です。
               </p>
             </li>
           </ul>
