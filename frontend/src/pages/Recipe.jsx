@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const API_SERVER = import.meta.env.VITE_API_SERVER;
+const PUBLIC_FOLDER = import.meta.env.VITE_API_PUBLIC_FOLDER;
 
 function Recipe() {
   const [recipe, setRecipe] = useState(null);
@@ -23,7 +24,7 @@ function Recipe() {
     <div className="sectionBoard w-full p-5">
       <h1>{recipe.title}</h1>
       <div>
-        <img src={recipe.image} alt={recipe.title} />
+        <img src={PUBLIC_FOLDER + "/" + recipe.image} alt={recipe.title} />
       </div>
       <p>{recipe.description}</p>
       <div>

@@ -62,7 +62,7 @@ function EditRecipe() {
   };
 
   //編集完了ボタン、未入力チェック
-  const createRecipeButton = (e) => {
+  const createRecipeButton = async (e) => {
     e.preventDefault();
 
     if (
@@ -70,11 +70,24 @@ function EditRecipe() {
         (value) => value !== "" && value.length !== 0
       )
     ) {
-      alert("投稿を編集しました。");
-      const createRecipe = () => {
-        axios.put(API_SERVER + "/posts/" + userRecipe._id, editRecipe);
-      };
-      createRecipe();
+      const uniquePrefix = `${Math.round(Math.random() * 1e9)}`;
+      const data = new FormData();
+      const fileName = `${Date.now()}-${uniquePrefix}-${image.name}`;
+      data.append("name", fileName);
+      data.append("file", image);
+      editRecipe.image = fileName;
+      try {
+        await axios.put(API_SERVER + "/posts/" + userRecipe._id, editRecipe);
+        await axios.post(API_SERVER + "/upload", data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        alert("正常にデータが入力されました。");
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       alert("未入力の項目があります");
     }
@@ -85,7 +98,11 @@ function EditRecipe() {
       <form>
         <div className="sectionBoard w-full p-5">
           <InputTitle title={title} setTitle={setTitle} />
-          <InputImage image={image} setImage={setImage} />
+          <InputImage
+            userRecipe={userRecipe}
+            image={image}
+            setImage={setImage}
+          />
           <InputCategory category={category} setCategory={setCategory} />
           <InputSeaFoods
             seaFood={seaFood}

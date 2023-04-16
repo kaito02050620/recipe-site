@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const API_SERVER = import.meta.env.VITE_API_SERVER;
 
 function Register() {
@@ -8,9 +9,11 @@ function Register() {
   const password = useRef(null);
   const confirmPassword = useRef(null);
 
+  const navigate = useNavigate();
+
+  //新規登録ボタン、入力値チェック
   const newRegisterButton = async (e) => {
     e.preventDefault();
-    console.log(email.current.value);
     if (
       userName.current.value !== "" &&
       email.current.value !== "" &&
@@ -24,6 +27,7 @@ function Register() {
             email: email.current.value,
             password: password.current.value,
           });
+          navigate("/login");
         } catch (error) {
           console.log(error);
         }

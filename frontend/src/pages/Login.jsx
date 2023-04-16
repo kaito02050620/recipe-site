@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { loginCall } from "../state/dispatch";
+import { AuthContext } from "../state/AuthContext";
 const API_SERVER = import.meta.env.VITE_API_SERVER;
 
 function Login() {
   const email = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
+  //ログインボタン、入力値チェック
   const loginButton = async (e) => {
     e.preventDefault();
     if (
@@ -17,12 +21,13 @@ function Login() {
     ) {
       if (password.current.value === confirmPassword.current.value) {
         try {
-          console.log();
-          await axios.get(API_SERVER + "/auth/login", {
-            email: email.current.value,
-            password: password.current.value,
-          });
-          console.log("login");
+          loginCall(
+            {
+              email: email.current.value,
+              password: password.current.value,
+            },
+            dispatch
+          );
         } catch (error) {
           console.log(error);
         }
@@ -38,6 +43,7 @@ function Login() {
     }
   };
 
+  console.log(user);
   return (
     <div className="sectionBoard w-full p-20 ">
       <div className="max-w-sm bg-white bg-opacity-80 rounded-sm shadow-md p-6 m-auto ">

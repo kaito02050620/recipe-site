@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InputDescription from "../components/input/Description";
 import InputImage from "../components/input/Image";
 import InputTitle from "../components/input/Title";
@@ -7,10 +7,14 @@ import InputCook from "../components/input/cook";
 import InputCategory from "../components/input/category";
 import InputSeaFoods from "../components/input/Seafoods";
 import axios from "axios";
+import { AuthContext } from "../state/AuthContext";
+import { useNavigate } from "react-router-dom";
 const API_SERVER = import.meta.env.VITE_API_SERVER;
-const TEST_USER = import.meta.env.VITE_TEST_USER;
 
 function CreateRecipe() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
@@ -26,9 +30,9 @@ function CreateRecipe() {
 
   //リクエストするオブジェクト
   const newRecipe = {
-    userId: TEST_USER,
+    userId: user._id,
     title: title,
-    image: image.name,
+    image: image,
     category: category,
     seafoods: seaFoods,
     foods: foods,
@@ -36,8 +40,6 @@ function CreateRecipe() {
     people: Number(people),
     recipes: cooks,
   };
-
-  console.log(API_SERVER + "/upload");
 
   //投稿ボタン、入力値のバリデーション
   const createRecipeButton = async (e) => {
@@ -48,9 +50,12 @@ function CreateRecipe() {
         (value) => value !== "" && value.length !== 0
       )
     ) {
+      const uniquePrefix = `${Math.round(Math.random() * 1e9)}`;
       const data = new FormData();
-      data.append("image", image.name);
+      const fileName = `${Date.now()}-${uniquePrefix}-${image.name}`;
+      data.append("name", fileName);
       data.append("file", image);
+      newRecipe.image = fileName;
       try {
         await axios.post(API_SERVER + "/posts", newRecipe);
         await axios.post(API_SERVER + "/upload", data, {
@@ -58,8 +63,8 @@ function CreateRecipe() {
             "Content-Type": "multipart/form-data",
           },
         });
-
         alert("正常にデータが入力されました。");
+        navigate(`/user/${user._id}`);
       } catch (error) {
         console.log(error);
       }
