@@ -5,14 +5,10 @@ const path = require("path");
 //ファイルの保存先、一意なファイル名に変更
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images/");
+    cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    const uniquePrefix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    cb(
-      null,
-      `${file.fieldname}-${uniquePrefix}.${file.mimetype.split("/")[1]}`
-    );
+    cb(null, req.body.name);
   },
 });
 
@@ -33,7 +29,7 @@ const upload = multer({
       cb("画像ファイルではないので投稿出来ません");
     }
   },
-}).single("image");
+}).single("file");
 
 //画像をアップロード
 router.post("/", upload, (req, res) => {

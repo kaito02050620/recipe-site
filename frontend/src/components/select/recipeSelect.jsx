@@ -4,11 +4,11 @@ import { recipeName } from "./select";
 function RecipeSelect({ selectRecipe, setSelectRecipe }) {
   return (
     <>
-      <div className="block relative w-48">
+      <div className="block relative md:w-48 sm:w-36 w-28 ">
         <select
           value={selectRecipe}
           onChange={(e) => setSelectRecipe(e.target.value)}
-          className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          className="block md:text-base text-sm appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 sm:px-4 px-1 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         >
           {recipeName.map((recipe) => {
             return (

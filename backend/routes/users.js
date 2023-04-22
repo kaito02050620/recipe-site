@@ -6,18 +6,10 @@ const bcrypt = require("bcrypt");
 //ユーザー削除
 router.delete("/:id", async (req, res) => {
   const user = await User.findById({ _id: req.params.id });
-  const { id, password } = req.body;
-  const compared = await bcrypt.compare(password, user.password);
   try {
-    if (user.id === id && compared) {
-      await User.deleteOne({ _id: id });
-      await Post.deleteMany({ userId: id });
-      return res
-        .status(200)
-        .json("ユーザー情報、これまでの投稿を削除しました。");
-    } else {
-      return res.status(400).json("パスワードとユーザー情報が一致しません");
-    }
+    await User.deleteOne({ _id: user._id });
+    await Post.deleteMany({ userId: user._id });
+    return res.status(200).json("ユーザー情報、これまでの投稿を削除しました。");
   } catch (error) {
     return res.status(500).json(error);
   }

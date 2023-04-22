@@ -19,12 +19,10 @@ router.post("/register", async (req, res) => {
 });
 
 //ユーザーログイン
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     //ユーザー照合
-    console.log(req.body.email);
     const user = await User.findOne({ email: req.body.email });
-    console.log(user);
     if (!user) return res.status(400).json("ユーザーが見つかりません");
 
     //パスワード照合

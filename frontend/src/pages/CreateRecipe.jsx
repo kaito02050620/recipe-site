@@ -76,38 +76,47 @@ function CreateRecipe() {
   return (
     <>
       <form>
-        <div className="sectionBoard w-full p-5">
-          <InputTitle value={title} setTitle={setTitle} />
-          <InputImage image={image} setImage={setImage} />
-          <InputCategory category={category} setCategory={setCategory} />
-          <InputSeaFoods
-            seaFood={seaFood}
-            setSeaFood={setSeaFood}
-            seaFoods={seaFoods}
-            setSeaFoods={setSeaFoods}
-          />
-          <InputDescription
-            description={description}
-            setDescription={setDescription}
-          />
-          <InputFood
-            setPeople={setPeople}
-            foods={foods}
-            setFoods={setFoods}
-            ingredient={ingredient}
-            setIngredient={setIngredient}
-            amount={amount}
-            setAmount={setAmount}
-          />
-          <InputCook
-            cooks={cooks}
-            setCooks={setCooks}
-            recipe={recipe}
-            setRecipe={setRecipe}
-          />
-          <button type="submit" onClick={(e) => createRecipeButton(e)}>
-            送信
-          </button>
+        <div className="sectionBoard md:p-16 sm:p-8 p-4">
+          <div className=" sm:p-5 p-3 recipeListBoard">
+            <div className=" w-full sm:mb-10 mb-7 md:text-2xl sm:text-xl text-lg">
+              <h1 className="w-full text-center font-bold">レシピ投稿ページ</h1>
+            </div>
+            <InputTitle value={title} setTitle={setTitle} />
+            <InputImage image={image} setImage={setImage} />
+            <InputDescription
+              description={description}
+              setDescription={setDescription}
+            />
+            <InputCategory category={category} setCategory={setCategory} />
+            <InputSeaFoods
+              seaFood={seaFood}
+              setSeaFood={setSeaFood}
+              seaFoods={seaFoods}
+              setSeaFoods={setSeaFoods}
+            />
+            <InputFood
+              setPeople={setPeople}
+              foods={foods}
+              setFoods={setFoods}
+              ingredient={ingredient}
+              setIngredient={setIngredient}
+              amount={amount}
+              setAmount={setAmount}
+            />
+            <InputCook
+              cooks={cooks}
+              setCooks={setCooks}
+              recipe={recipe}
+              setRecipe={setRecipe}
+            />
+            <button
+              className="bg-red-600 bg-opacity-60 p-5 rounded-sm border-solid border-gray-800 border block w-3/4 m-auto md:text-2xl sm:text-lg text-base my-5 font-bold"
+              type="submit"
+              onClick={(e) => createRecipeButton(e)}
+            >
+              レシピを投稿する
+            </button>
+          </div>
         </div>
       </form>
     </>

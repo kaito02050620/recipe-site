@@ -5,8 +5,8 @@ import { GiBowlOfRice } from "react-icons/gi";
 function LookRecipeButton() {
   return (
     <Link className=" viewRecipeButton" to="/recipeList">
-      <div className="flex">
-        <p className="mr-2">レシピを見る</p>
+      <div className="flex items-center">
+        <p className="mr-2 md:text-lg text-sm">レシピを見る</p>
         <GiBowlOfRice
           size={25}
           style={{ display: "inline-block", margin: "auto", opacity: "0.9" }}

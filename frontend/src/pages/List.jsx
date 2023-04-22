@@ -78,8 +78,8 @@ function RecipeList() {
   };
 
   return (
-    <div className="sectionBoard w-full p-5 ">
-      <h1 className="text-3xl mb-10">レシピ一覧</h1>
+    <div className="sectionBoard w-full lg:p-5 p-4 ">
+      <h1 className="homeTitleFont">レシピ一覧</h1>
       <SearchState.Provider
         value={[
           selectRecipe,
@@ -92,10 +92,10 @@ function RecipeList() {
       >
         <RecipeSearch />
       </SearchState.Provider>
-      <ul className="mt-11">
+      <ul className="md:mt-11 sm:mt-5 mt-3">
         {searchRecipe.length === 0 ? (
-          <h2 className="text-3xl my-6 text-center">
-            検索結果はありません。まだ投稿はありません
+          <h2 className=" sm:text-2xl text-lg my-6 text-center">
+            投稿がありません。
           </h2>
         ) : (
           searchRecipe

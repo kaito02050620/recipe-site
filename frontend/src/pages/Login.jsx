@@ -42,10 +42,8 @@ function Login() {
       console.log("ログインできません");
     }
   };
-
-  console.log(user);
   return (
-    <div className="sectionBoard w-full p-20 ">
+    <div className="sectionBoard md:p-16 sm:p-8 p-4">
       <div className="max-w-sm bg-white bg-opacity-80 rounded-sm shadow-md p-6 m-auto ">
         <h1 className="text-2xl text-center mb-5">ログイン</h1>
         <form className="" onSubmit={(e) => loginButton(e)}>

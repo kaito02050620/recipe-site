@@ -5,6 +5,7 @@ const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const authRoutes = require("./routes/auth");
 const uploadRoutes = require("./routes/upload");
+const path = require("path");
 const cors = require("cors");
 const app = express();
 
@@ -31,6 +32,7 @@ mongoose
     console.log(error);
   });
 
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);

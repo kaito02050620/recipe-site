@@ -6,7 +6,7 @@ import Ranking from "../components/home/Ranking";
 function Home() {
   return (
     <>
-      <section className="flex justify-between mb-10">
+      <section className="md:flex justify-between mb-10">
         <Dinner />
         <MonthTheme />
       </section>

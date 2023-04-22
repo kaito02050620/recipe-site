@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { foodName } from "../select/select";
+import CreateRecipeButton from "../button/CreateRecipe";
 
 //配列取得　今の月を取得
 const month = new Date().getMonth() + 1;
@@ -11,28 +11,14 @@ const theme = other[randomNo];
 function MonthTheme() {
   return (
     <>
-      <div className="sectionBoard ml-8 w-5/12 p-5">
-        <h1 className="text-3xl mb-24">{`${month}月のお題`}</h1>
+      <div className="sectionBoard md:ml-4 md:mt-0 sm:mt-4 mt-2 md:w-3/6 w-full lg:p-5 p-4">
+        <h1 className="homeTitleFont">{`${month}月のお題`}</h1>
         <div className="w-full text-center">
-          <p className="text-5xl mb-10">{theme}</p>
-          <Link className="viewRecipeButton mb-5" to="/recipeInput">
-            レシピを投稿する
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 inline"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </Link>
-          <p>お題の食材を使った料理をして投稿してみよう！</p>
+          <p className="md:text-5xl text-xl md:mb-10 mb-5">{theme}</p>
+          <CreateRecipeButton />
+          <p className="mt-2 sm:text-base text-sm">
+            お題の食材を使った料理をして投稿してみよう！
+          </p>
         </div>
       </div>
     </>
