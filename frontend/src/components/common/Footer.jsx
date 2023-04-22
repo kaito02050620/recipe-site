@@ -9,7 +9,6 @@ const Footer = () => {
 
   const logoutButton = (e) => {
     e.preventDefault();
-    console.log("ss");
     localStorage.removeItem("takenoko_seafood_user");
     navigate("/");
     window.location.reload();

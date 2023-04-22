@@ -25,6 +25,7 @@ function UserRecipe({ ...recipe }) {
   const day = date.getDate();
   const newUpdatedAt = `${year}/${month}/${day}`;
 
+  //投稿を削除するボタン
   const deleteButton = async () => {
     await axios.delete(API_SERVER + "/posts/" + recipe._id, {
       data: {

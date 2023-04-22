@@ -31,6 +31,7 @@ function User() {
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
 
+  //退会処理
   const deleteUserButton = async (e) => {
     e.preventDefault();
     if (
@@ -42,7 +43,6 @@ function User() {
       localStorage.removeItem("takenoko_seafood_user");
       await axios.delete(API_SERVER + "/users/" + user._id);
       window.location.reload();
-      // navigate("/");
     } else {
       return;
     }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MyDropzoneBasic from "./Drop";
 const PUBLIC_FOLDER = import.meta.env.VITE_API_PUBLIC_FOLDER;
 
-function InputImage({ userRecipe, image, setImage }) {
+function InputImage({ image, setImage }) {
   const [preview, setPreview] = useState("");
   const imageDeleteButton = (e) => {
     e.preventDefault();

@@ -18,7 +18,6 @@ export const recipeName = [
   "パスタ",
   "ラーメン",
   "グラタン",
-  "サンドイッチ",
   "パエリア",
   "アクアパッツァ",
   "酒蒸し",
@@ -32,6 +31,7 @@ export const recipeName = [
   "ハンバーグ",
   "サラダ",
   "南蛮漬け",
+  "その他",
 ];
 export const foodName = [
   "海鮮名",
@@ -74,7 +74,6 @@ export const foodName = [
   "サーモン",
   "シイラ",
   "シャコ",
-  "ジャコ",
   "フグ",
   "ブリ",
   "メバル",
