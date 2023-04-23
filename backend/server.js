@@ -19,7 +19,7 @@ app.use(
 
 //環境変数
 require("dotenv").config();
-const PORT = process.env.port;
+const PORT = process.env.port || 8000;
 const DATA_BASE_URL = process.env.dataBaseUrl;
 
 //MongoDB接続
